@@ -12,14 +12,18 @@
 <!-- Header / Navigation -->
 <header class="navbar">
     <div class="logo-container">
-        <img src="images/logo.png" alt="Classix Media Logo" class="logo">
+        <img src="images/logo.png" alt="Classix Media" class="logo">
+        <span class="logo-text">Classix Media</span>
     </div>
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
         <a href="#about" class="nav-btn active">ABOUT</a>
         <a href="#work" class="nav-btn">WORK</a>
         <a href="#services" class="nav-btn">SERVICES</a>
         <a href="#contact" class="nav-btn">CONTACT</a>
     </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
 </header>
 
 <!-- Hero Section -->
@@ -33,7 +37,9 @@
         </div>
     </div>
     <div class="hero-right">
-        <img src="images/glass.gif" alt="Animated Glass Shapes" class="glass-hero-img">
+        <video class="glass-hero-img" autoplay loop muted playsinline>
+            <source src="images/glass.mp4" type="video/mp4">
+        </video>
     </div>
 </section>
 
@@ -139,7 +145,9 @@
 <section class="tools-elevate-section">
     <div class="dual-grid">
         <div class="dual-card laptop-card">
-            <img src="images/tools.gif" alt="Tools Animation" class="dual-gif">
+            <video class="dual-gif" autoplay loop muted playsinline>
+                <source src="images/tools.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="dual-card elevate-card">
             <h3>Ready To Elevate Your Brand</h3>
@@ -165,7 +173,7 @@
         <div class="portfolio-side-stack">
             <a href="https://www.behance.net/chibuikeisrael" target="_blank" class="btn side-stack-btn explore-btn">Explore More</a>
             <a href="https://pin.it/CNLsnCQkK" target="_blank" class="btn side-stack-btn pinterest-btn">
-                <span class="pinterest-icon">P</span> Visit Pinterest
+                Visit Pinterest
             </a>
         </div>
     </div>
