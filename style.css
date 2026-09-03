@@ -83,6 +83,22 @@ h1, h2, h3, h4 {
     background: #0055ff;
 }
 
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+}
+.nav-toggle span {
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+}
+
 /* Hero Section */
 .hero-section {
     display: flex;
@@ -475,10 +491,6 @@ h1, h2, h3, h4 {
     gap: 8px;
 }
 
-.pinterest-icon { color: #e60023; flex-shrink: 0; }
-    gap: 6px;
-}
-
 .explore-btn { background: rgba(2, 6, 23, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); }
 .pinterest-btn { background: rgba(2, 6, 23, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); }
 
@@ -547,8 +559,27 @@ a.info-pill:hover { color: #38bdf8; }
 
 /* Responsive */
 @media (max-width: 900px) {
-    .navbar { flex-direction: column; gap: 12px; padding: 16px 6%; }
-    .nav-links { flex-wrap: wrap; justify-content: center; }
+    .navbar { padding: 16px 6%; position: relative; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(2, 6, 23, 0.97);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        gap: 0;
+        display: none;
+        border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a {
+        padding: 16px 6%;
+        border-radius: 0;
+        border-top: 1px solid rgba(56, 189, 248, 0.1);
+        text-align: center;
+    }
     .hero-section, .about-section { padding-left: 6%; padding-right: 6%; text-align: center; }
     .hero-left, .about-left { margin: 0 auto; }
     .hero-buttons { justify-content: center; }
@@ -557,7 +588,7 @@ a.info-pill:hover { color: #38bdf8; }
     .portfolio-outer-frame { flex-direction: column; }
     .portfolio-card-relative { aspect-ratio: 4 / 5; flex-basis: auto; width: 100%; }
     .portfolio-side-stack { flex-direction: row; width: 100%; }
-    .side-stack-btn { flex: 1; }
+    .side-stack-btn { flex: 1; min-height: 48px; padding: 12px 16px; }
     .form-row { flex-direction: column; }
 }
 
