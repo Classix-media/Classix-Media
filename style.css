@@ -13,17 +13,18 @@ body {
     overflow-x: hidden;
 }
 
-/* Single soft glow behind the whole page, not tiled/repeated */
+/* Soft glow spanning the full page height, minimal and professional */
 body::before {
     content: '';
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-image: url('images/glow.png');
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: 140% auto;
-    opacity: 0.5;
+    background:
+        radial-gradient(ellipse 900px 500px at 15% 0%, rgba(31,63,214,0.28), transparent 55%),
+        radial-gradient(ellipse 700px 500px at 85% 20%, rgba(63,208,255,0.12), transparent 55%),
+        radial-gradient(ellipse 800px 500px at 20% 55%, rgba(31,63,214,0.16), transparent 55%),
+        radial-gradient(ellipse 800px 500px at 80% 80%, rgba(31,63,214,0.2), transparent 55%),
+        radial-gradient(ellipse 900px 500px at 30% 100%, rgba(63,208,255,0.14), transparent 55%);
     pointer-events: none;
 }
 
@@ -44,13 +45,21 @@ h1, h2, h3, h4 {
     z-index: 1000;
 }
 
-.logo-container { display: flex; align-items: center; }
+.logo-container { display: flex; align-items: center; gap: 10px; }
 
 .logo {
     height: 38px;
     width: auto;
     object-fit: contain;
     display: block;
+}
+
+.logo-text {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #ffffff;
+    letter-spacing: 0.02em;
 }
 
 .nav-links {
@@ -454,6 +463,10 @@ h1, h2, h3, h4 {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
+}
+
+.pinterest-icon { color: #e60023; flex-shrink: 0; }
     gap: 6px;
 }
 
@@ -498,8 +511,8 @@ a.info-pill:hover { color: #38bdf8; }
 .social-btn:hover { background: #0055ff; }
 
 .contact-form { display: flex; flex-direction: column; gap: 15px; }
-.form-row { display: flex; gap: 15px; flex-wrap: wrap; }
-.form-group { display: flex; flex-direction: column; gap: 6px; flex: 1 1 140px; }
+.form-row { display: flex; gap: 15px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; flex: 1 1 0; min-width: 0; }
 .form-group label { font-size: 0.7rem; color: #64748b; font-weight: 700; }
 
 .form-group input, .form-group select, .form-group textarea {
@@ -535,5 +548,6 @@ a.info-pill:hover { color: #38bdf8; }
     .portfolio-outer-frame { flex-direction: column; }
     .portfolio-side-stack { flex-direction: row; width: 100%; }
     .side-stack-btn { flex: 1; }
+    .form-row { flex-direction: column; }
 }
 
