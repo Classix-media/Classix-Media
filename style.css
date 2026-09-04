@@ -404,7 +404,7 @@ h1, h2, h3, h4 {
     background: none;
     border: none;
     box-shadow: none;
-    min-height: 320px;
+    min-height: 340px;
 }
 
 .dual-gif {
@@ -415,10 +415,116 @@ h1, h2, h3, h4 {
     display: block;
 }
 
-.dual-gif-blend {
-    mix-blend-mode: lighten;
-    filter: brightness(1.15) contrast(1.05);
-    border-radius: 0;
+/* ============ CSS-BUILT FLOATING LAPTOP + ORBITING ICONS ============ */
+.orbit-scene {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.laptop-shape {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    z-index: 3;
+    animation: laptopFloat 5s ease-in-out infinite;
+}
+
+.laptop-screen {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+    border: 2px solid rgba(120, 170, 255, 0.5);
+    background:
+        radial-gradient(circle at 50% 55%, rgba(63, 208, 255, 0.55), rgba(4, 7, 15, 0.9) 65%),
+        #04070f;
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.35), inset 0 0 30px rgba(56, 189, 248, 0.15);
+}
+
+.laptop-base {
+    width: 130%;
+    height: 8px;
+    margin: 0 auto;
+    margin-top: -2px;
+    margin-left: -15%;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(90deg, rgba(120,170,255,0.1), rgba(180,210,255,0.5), rgba(120,170,255,0.1));
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.25);
+}
+
+@keyframes laptopFloat {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-8px); }
+}
+
+.orbit-ring {
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(120, 170, 255, 0.35);
+}
+
+.ring-back {
+    width: 300px;
+    height: 90px;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.ring-front {
+    width: 340px;
+    height: 70px;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    border-color: rgba(120, 170, 255, 0.5);
+}
+
+.orbit-icon {
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.4), 0 0 18px rgba(56,189,248,0.3);
+    animation: orbitPath var(--dur, 16s) linear infinite;
+    animation-delay: var(--delay, 0s);
+    z-index: 3;
+}
+
+.icon-ps { background: linear-gradient(135deg, #1fa8ff, #0055ff); }
+.icon-ai { background: linear-gradient(135deg, #ff9a3c, #ff6a00); }
+.icon-pr { background: linear-gradient(135deg, #9b6bff, #5b2fd6); }
+.icon-canva { background: linear-gradient(135deg, #38f0d0, #6a5bff); }
+
+/* Elliptical orbit path approximating Saturn-ring motion, with depth fade at the back */
+@keyframes orbitPath {
+    0%   { transform: translate(calc(-50% + 170px), -50%) scale(1);    opacity: 1;    z-index: 5; }
+    12%  { transform: translate(calc(-50% + 145px), calc(-50% - 22px)) scale(0.94); opacity: 0.95; }
+    25%  { transform: translate(calc(-50% + 0px),   calc(-50% - 34px)) scale(0.8);  opacity: 0.7; z-index: 1; }
+    37%  { transform: translate(calc(-50% - 145px), calc(-50% - 22px)) scale(0.7);  opacity: 0.55; }
+    50%  { transform: translate(calc(-50% - 170px), -50%) scale(0.65); opacity: 0.5; z-index: 1; }
+    62%  { transform: translate(calc(-50% - 145px), calc(-50% + 22px)) scale(0.7);  opacity: 0.55; }
+    75%  { transform: translate(calc(-50% + 0px),   calc(-50% + 34px)) scale(0.8);  opacity: 0.7; z-index: 1; }
+    87%  { transform: translate(calc(-50% + 145px), calc(-50% + 22px)) scale(0.94); opacity: 0.95; }
+    100% { transform: translate(calc(-50% + 170px), -50%) scale(1);    opacity: 1;    z-index: 5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .laptop-shape { animation: none; }
+    .orbit-icon { animation: none; opacity: 1; }
 }
 
 .elevate-card h3 { color: #38bdf8; margin-bottom: 15px; }
