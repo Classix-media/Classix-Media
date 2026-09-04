@@ -404,8 +404,7 @@ h1, h2, h3, h4 {
     background: none;
     border: none;
     box-shadow: none;
-    overflow: hidden;
-    min-height: 440px;
+    min-height: 320px;
 }
 
 .dual-gif {
@@ -417,15 +416,9 @@ h1, h2, h3, h4 {
 }
 
 .dual-gif-blend {
-    mix-blend-mode: screen;
-    filter: brightness(1.5) contrast(1.2);
+    mix-blend-mode: lighten;
+    filter: brightness(1.15) contrast(1.05);
     border-radius: 0;
-    max-height: none;
-    width: 100%;
-    height: auto;
-    transform: scale(2.6);
-    -webkit-mask-image: radial-gradient(ellipse 50% 50% at center, black 65%, transparent 95%);
-    mask-image: radial-gradient(ellipse 50% 50% at center, black 65%, transparent 95%);
 }
 
 .elevate-card h3 { color: #38bdf8; margin-bottom: 15px; }
