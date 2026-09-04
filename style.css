@@ -152,7 +152,8 @@ h1, h2, h3, h4 {
     height: auto;
     display: block;
     border-radius: 28px;
-    mix-blend-mode: screen;
+    mix-blend-mode: lighten;
+    filter: brightness(1.15) contrast(1.05);
 }
 
 /* Buttons */
@@ -406,6 +407,12 @@ h1, h2, h3, h4 {
     display: block;
 }
 
+.dual-gif-blend {
+    mix-blend-mode: lighten;
+    filter: brightness(1.15) contrast(1.05);
+    border-radius: 0;
+}
+
 .elevate-card h3 { color: #38bdf8; margin-bottom: 15px; }
 
 .elevate-btns { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
@@ -561,7 +568,7 @@ a.info-pill:hover { color: #38bdf8; }
 
 /* Responsive */
 @media (max-width: 900px) {
-    .navbar { padding: 16px 6%; position: relative; }
+    .navbar { padding: 16px 6%; position: sticky; top: 0; }
     .nav-toggle { display: flex; }
     .nav-links {
         position: absolute;
@@ -593,5 +600,36 @@ a.info-pill:hover { color: #38bdf8; }
     .portfolio-side-stack { flex: 0 0 auto; flex-direction: column; width: 100%; }
     .side-stack-btn { flex: 1; min-height: 48px; padding: 12px 16px; width: 100%; }
     .form-row { flex-direction: column; }
+}
+
+/* ============ SCROLL REVEAL ANIMATIONS ============ */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-up.in-view,
+.reveal-left.in-view,
+.reveal-right.in-view {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-up, .reveal-left, .reveal-right {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
