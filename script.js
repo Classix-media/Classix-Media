@@ -40,3 +40,29 @@ Project details: ${message}`;
   });
 }
 
+// Scroll reveal animations — slide up / left / right as sections come into view
+function setupScrollReveal() {
+  const upTargets = document.querySelectorAll(
+    ".stat-card, .about-left, .faq-card, .service-card, .dual-card, .portfolio-outer-frame, .contact-left, .contact-right"
+  );
+  const leftTargets = document.querySelectorAll(".about-right, .need-card");
+
+  upTargets.forEach(el => el.classList.add("reveal-up"));
+  leftTargets.forEach(el => el.classList.add("reveal-left"));
+
+  const allTargets = [...upTargets, ...leftTargets];
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -12% 0px" });
+
+  allTargets.forEach(el => observer.observe(el));
+}
+
+setupScrollReveal();
+
