@@ -415,116 +415,158 @@ h1, h2, h3, h4 {
     display: block;
 }
 
-/* ============ CSS-BUILT FLOATING LAPTOP + ORBITING ICONS ============ */
+/* ============ CSS-BUILT FLOATING DESKTOP PC + ORBITING ICONS ============ */
 .orbit-scene {
     position: relative;
     width: 100%;
-    max-width: 360px;
-    height: 300px;
+    max-width: 400px;
+    height: 380px;
     margin: 0 auto;
+    perspective: 900px;
+    transition: transform 0.4s ease-out;
 }
 
-.laptop-shape {
+.pc-shape {
     position: absolute;
-    top: 40%;
+    top: 60px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 220px;
     z-index: 3;
-    animation: laptopFloat 5s ease-in-out infinite;
+    animation: pcFloat 6s ease-in-out infinite;
 }
 
-.laptop-screen {
+.pc-monitor {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 11;
     border-radius: 12px;
     border: 2px solid rgba(120, 170, 255, 0.5);
     background:
-        radial-gradient(circle at 50% 55%, rgba(63, 208, 255, 0.55), rgba(4, 7, 15, 0.9) 65%),
+        radial-gradient(circle at 50% 48%, rgba(63, 208, 255, 0.5), rgba(4, 7, 15, 0.92) 68%),
         #04070f;
-    box-shadow: 0 0 40px rgba(56, 189, 248, 0.35), inset 0 0 30px rgba(56, 189, 248, 0.15);
+    box-shadow: 0 0 46px rgba(56, 189, 248, 0.32), inset 0 0 34px rgba(56, 189, 248, 0.14);
 }
 
-.laptop-base {
-    width: 130%;
-    height: 8px;
+.pc-stand {
+    width: 16px;
+    height: 30px;
     margin: 0 auto;
-    margin-top: -2px;
-    margin-left: -15%;
-    border-radius: 0 0 10px 10px;
-    background: linear-gradient(90deg, rgba(120,170,255,0.1), rgba(180,210,255,0.5), rgba(120,170,255,0.1));
-    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.25);
+    background: linear-gradient(180deg, rgba(150,190,255,0.4), rgba(60,90,150,0.25));
+    border-radius: 0 0 3px 3px;
 }
 
-@keyframes laptopFloat {
-    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-    50% { transform: translate(-50%, -50%) translateY(-8px); }
+.pc-foot {
+    width: 60px;
+    height: 7px;
+    margin: 0 auto;
+    border-radius: 6px;
+    background: linear-gradient(90deg, rgba(120,170,255,0.15), rgba(180,210,255,0.5), rgba(120,170,255,0.15));
+}
+
+.pc-keyboard {
+    width: 220%;
+    margin: 22px auto 0;
+    margin-left: -60%;
+    height: 16px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #0f1a3a, #070c1e);
+    border: 1px solid rgba(120,170,255,0.2);
+    box-shadow: 0 8px 26px rgba(56, 189, 248, 0.18);
+    position: relative;
+}
+.pc-keyboard::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: rgba(150,190,255,0.25);
+}
+
+@keyframes pcFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
 }
 
 .orbit-ring {
     position: absolute;
-    top: 68%;
+    top: 136px;
     left: 50%;
     border-radius: 50%;
-    border: 1px solid rgba(120, 170, 255, 0.35);
+    border: 1px solid rgba(120, 170, 255, 0.3);
 }
 
 .ring-back {
-    width: 300px;
-    height: 90px;
+    width: 330px;
+    height: 130px;
     transform: translate(-50%, -50%);
     z-index: 1;
 }
 
 .ring-front {
-    width: 340px;
-    height: 70px;
+    width: 380px;
+    height: 105px;
     transform: translate(-50%, -50%);
     z-index: 4;
-    border-color: rgba(120, 170, 255, 0.5);
+    border-color: rgba(120, 170, 255, 0.45);
 }
 
 .orbit-icon {
     position: absolute;
-    top: 68%;
+    top: 136px;
     left: 50%;
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Sora', sans-serif;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     color: #fff;
     box-shadow: 0 8px 22px rgba(0,0,0,0.4), 0 0 18px rgba(56,189,248,0.3);
-    animation: orbitPath var(--dur, 16s) linear infinite;
+    animation: orbitPath var(--dur, 18s) linear infinite;
     animation-delay: var(--delay, 0s);
     z-index: 3;
+    will-change: transform, opacity, filter;
 }
 
 .icon-ps { background: linear-gradient(135deg, #1fa8ff, #0055ff); }
 .icon-ai { background: linear-gradient(135deg, #ff9a3c, #ff6a00); }
 .icon-pr { background: linear-gradient(135deg, #9b6bff, #5b2fd6); }
-.icon-canva { background: linear-gradient(135deg, #38f0d0, #6a5bff); }
+.icon-canva { background: linear-gradient(135deg, #38f0d0, #6a5bff); font-size: 0.6rem; }
+.icon-blender { background: linear-gradient(135deg, #ff8a3c, #d94a1f); }
 
-/* Elliptical orbit path approximating Saturn-ring motion, with depth fade at the back */
+/* Orbit stays anchored to the monitor's own vertical center, well clear of the
+   stand and keyboard below it, so icons circle the screen rather than clipping the base. */
 @keyframes orbitPath {
-    0%   { transform: translate(calc(-50% + 170px), -50%) scale(1);    opacity: 1;    z-index: 5; }
-    12%  { transform: translate(calc(-50% + 145px), calc(-50% - 22px)) scale(0.94); opacity: 0.95; }
-    25%  { transform: translate(calc(-50% + 0px),   calc(-50% - 34px)) scale(0.8);  opacity: 0.7; z-index: 1; }
-    37%  { transform: translate(calc(-50% - 145px), calc(-50% - 22px)) scale(0.7);  opacity: 0.55; }
-    50%  { transform: translate(calc(-50% - 170px), -50%) scale(0.65); opacity: 0.5; z-index: 1; }
-    62%  { transform: translate(calc(-50% - 145px), calc(-50% + 22px)) scale(0.7);  opacity: 0.55; }
-    75%  { transform: translate(calc(-50% + 0px),   calc(-50% + 34px)) scale(0.8);  opacity: 0.7; z-index: 1; }
-    87%  { transform: translate(calc(-50% + 145px), calc(-50% + 22px)) scale(0.94); opacity: 0.95; }
-    100% { transform: translate(calc(-50% + 170px), -50%) scale(1);    opacity: 1;    z-index: 5; }
+    0%   { transform: translate(calc(-50% + 195px), -50%) scale(1);    opacity: 1;   filter: blur(0px); z-index: 5; }
+    12%  { transform: translate(calc(-50% + 168px), calc(-50% - 38px)) scale(0.92); opacity: 0.92; filter: blur(0px); }
+    25%  { transform: translate(calc(-50% + 0px),   calc(-50% - 58px)) scale(0.72); opacity: 0.6;  filter: blur(1px); z-index: 1; }
+    37%  { transform: translate(calc(-50% - 168px), calc(-50% - 38px)) scale(0.6);  opacity: 0.42; filter: blur(1.5px); }
+    50%  { transform: translate(calc(-50% - 195px), -50%) scale(0.55); opacity: 0.36; filter: blur(1.5px); z-index: 1; }
+    62%  { transform: translate(calc(-50% - 168px), calc(-50% + 38px)) scale(0.6);  opacity: 0.42; filter: blur(1.5px); }
+    75%  { transform: translate(calc(-50% + 0px),   calc(-50% + 58px)) scale(0.72); opacity: 0.6;  filter: blur(1px); z-index: 1; }
+    87%  { transform: translate(calc(-50% + 168px), calc(-50% + 38px)) scale(0.92); opacity: 0.92; filter: blur(0px); }
+    100% { transform: translate(calc(-50% + 195px), -50%) scale(1);    opacity: 1;   filter: blur(0px); z-index: 5; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .laptop-shape { animation: none; }
-    .orbit-icon { animation: none; opacity: 1; }
+    .pc-shape { animation: none; }
+    .orbit-icon { animation: none; opacity: 1; filter: none; }
+    .orbit-scene { transform: none !important; }
+}
+
+@media (max-width: 900px) {
+    .orbit-scene { max-width: 320px; height: 320px; }
+    .pc-shape { width: 180px; top: 48px; }
+    .pc-keyboard { width: 160%; margin-left: -30%; margin-top: 16px; height: 12px; }
+    .orbit-ring, .orbit-icon { top: 112px; }
+    .ring-back { width: 270px; height: 108px; }
+    .ring-front { width: 310px; height: 88px; }
+    .orbit-icon { width: 40px; height: 40px; font-size: 0.62rem; }
 }
 
 .elevate-card h3 { color: #38bdf8; margin-bottom: 15px; }
