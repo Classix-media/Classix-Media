@@ -40,10 +40,54 @@ Project details: ${message}`;
   });
 }
 
+// Clients Reviews Carousel
+const reviewTrack = document.getElementById("reviewTrack");
+const reviewDotsWrap = document.getElementById("reviewDots");
+const reviewPrevBtn = document.getElementById("reviewPrev");
+const reviewNextBtn = document.getElementById("reviewNext");
+
+if (reviewTrack && reviewDotsWrap && reviewPrevBtn && reviewNextBtn) {
+  const totalReviews = reviewTrack.children.length;
+  let currentReview = 0;
+  let autoplayTimer;
+
+  for (let i = 0; i < totalReviews; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot" + (i === 0 ? " active" : "");
+    dot.addEventListener("click", () => goToReview(i));
+    reviewDotsWrap.appendChild(dot);
+  }
+  const dots = reviewDotsWrap.querySelectorAll(".dot");
+
+  function updateReview() {
+    reviewTrack.style.transform = `translateX(-${currentReview * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle("active", i === currentReview));
+  }
+
+  function goToReview(index) {
+    currentReview = (index + totalReviews) % totalReviews;
+    updateReview();
+    resetAutoplay();
+  }
+
+  function nextReview() { goToReview(currentReview + 1); }
+  function prevReview() { goToReview(currentReview - 1); }
+
+  function resetAutoplay() {
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(nextReview, 6000);
+  }
+
+  reviewNextBtn.addEventListener("click", nextReview);
+  reviewPrevBtn.addEventListener("click", prevReview);
+
+  resetAutoplay();
+}
+
 // Scroll reveal animations — slide up / left / right as sections come into view
 function setupScrollReveal() {
   const upTargets = document.querySelectorAll(
-    ".stat-card, .about-left, .faq-card, .service-card, .dual-card, .portfolio-outer-frame, .contact-left, .contact-right"
+    ".stat-card, .about-left, .faq-card, .service-card, .dual-card, .reviews-section, .portfolio-outer-frame, .contact-left, .contact-right"
   );
   const leftTargets = document.querySelectorAll(".about-right, .need-card");
 
@@ -65,4 +109,3 @@ function setupScrollReveal() {
 }
 
 setupScrollReveal();
-
