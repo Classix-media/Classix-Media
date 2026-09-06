@@ -104,7 +104,7 @@ h1, h2, h3, h4 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 80px 8% 40px;
+    padding: 80px 8% 10px;
     gap: 40px;
     flex-wrap: wrap;
 }
@@ -143,14 +143,16 @@ h1, h2, h3, h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 280px;
+    overflow: hidden;
 }
 
 .glass-hero-img {
     max-width: 420px;
     width: 100%;
-    height: auto;
+    height: 300px;
     display: block;
+    object-fit: cover;
+    object-position: center;
     mix-blend-mode: lighten;
     filter: brightness(1.15) contrast(1.05);
     -webkit-mask-image: radial-gradient(ellipse 70% 70% at center, black 50%, transparent 88%);
@@ -706,12 +708,11 @@ a.info-pill:hover { color: #38bdf8; }
     .hero-section {
         padding-left: 6%;
         padding-right: 6%;
-        padding-bottom: 15px;
+        padding-bottom: 0;
         text-align: left;
     }
     .hero-left { margin: 0; }
     .hero-buttons { justify-content: flex-start; }
-    .hero-right { min-height: auto; }
     .glass-hero-img { max-width: 480px; }
     .about-section { padding-left: 6%; padding-right: 6%; text-align: center; }
     .about-left { margin: 0 auto; }
