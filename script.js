@@ -28,7 +28,7 @@ if (form) {
     const message = document.getElementById("message").value.trim();
 
     const text =
-`Hi Classix Media, I'd like to start a project.
+`Hi Implify Visuals, I'd like to start a project.
 
 Name: ${firstName} ${lastName}
 Email: ${email}
@@ -87,7 +87,7 @@ if (reviewTrack && reviewDotsWrap && reviewPrevBtn && reviewNextBtn) {
 // Scroll reveal animations — slide up / left / right as sections come into view
 function setupScrollReveal() {
   const upTargets = document.querySelectorAll(
-    ".stat-card, .about-left, .faq-card, .service-card, .dual-card, .reviews-section, .portfolio-outer-frame, .contact-left, .contact-right"
+    ".stat-card, .about-left, .faq-card, .service-card, .dual-card, .tools-card, .reviews-section, .portfolio-outer-frame, .contact-left, .contact-right"
   );
   const leftTargets = document.querySelectorAll(".about-right, .need-card");
 
