@@ -680,7 +680,7 @@ a.info-pill:hover { color: #38bdf8; }
     border-top: 1px solid rgba(56, 189, 248, 0.15);
 }
 
-/* Responsive */
+/* Responsive — MOBILE ONLY (max-width: 900px) */
 @media (max-width: 900px) {
     .navbar { padding: 14px 4%; }
     .logo { height: 34px; }
@@ -750,4 +750,11 @@ a.info-pill:hover { color: #38bdf8; }
 .reveal-left.in-view {
     opacity: 1;
     transform: translateX(0);
+}
+
+/* Responsive — DESKTOP/PC ONLY (min-width: 901px) */
+@media (min-width: 901px) {
+    .glass-hero-img {
+        height: 400px;
+    }
 }
